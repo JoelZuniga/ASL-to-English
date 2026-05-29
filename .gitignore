@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc.*
+
+# Virtual environments
+venv/
+.env/
+.envrc/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# Jupyter (if you use later)
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Data (DO NOT COMMIT)
+data/raw/
+data/interim/
+data/processed/
+
+# Models (large files)
+models/*.task
+models/*.pt
+models/*.pth
+models/*.onnx
+models/*.pkl
+
+# Video / Images (if you capture)
+*.mp4
+*.avi
+*.mov
+*.jpg
+*.png
+
+# Build / cache
+build/
+dist/
+*.egg-info/
+
+# Misc
+*.swp
+*.swo
