@@ -1,5 +1,7 @@
 import cv2 as cv
+
 from src.config import HAND_CONNECTIONS
+
 
 def draw_hand_landmarks(image, hand_landmarks):
     h, w, _ = image.shape
