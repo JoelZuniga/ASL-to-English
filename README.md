@@ -2,12 +2,12 @@
 A computer vision and machine learning project that aims to translate American Sign Language (ASL) into English using real-time hand tracking, landmark extraction, and gesture classification. 
 
 ## Project overview 
-The goal of this project is to build a ASL recognition pipeline capable of: 
+The goal of this project is to build an ASL recognition pipeline capable of: 
 
 - Detecting hands from a live webcam feed 
 - Extracting hand landmark coordinates using MediaPipe
 - Building a labeled dataset of ASL signs 
-- Training machine learning models foor sign classification 
+- Training machine learning models for sign classification 
 - Translating recognized signs into English text 
 
 ## Installation 
