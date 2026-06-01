@@ -25,3 +25,11 @@ HAND_CONNECTIONS = [
     (19, 20),
     (0, 17),
 ]
+
+# Landmark feature engineering
+LANDMARK_COUNT = 21
+COORDINATE_COUNT = 3
+WRIST_INDEX = 0
+
+# Numerical stability
+EPSILON = 1e-8
