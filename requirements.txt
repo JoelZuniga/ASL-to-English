@@ -12,6 +12,7 @@ fonttools==4.60.2
 identify==2.6.15
 importlib_resources==6.5.2
 iniconfig==2.1.0
+joblib==1.5.3
 kiwisolver==1.4.7
 librt==0.11.0
 matplotlib==3.9.4
@@ -37,8 +38,11 @@ python-discovery==1.4.0
 pytz==2026.2
 PyYAML==6.0.3
 ruff==0.15.15
+scikit-learn==1.6.1
+scipy==1.13.1
 six==1.17.0
 sounddevice==0.5.5
+threadpoolctl==3.6.0
 tomli==2.4.1
 typing_extensions==4.15.0
 tzdata==2026.2
