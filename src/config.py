@@ -33,3 +33,8 @@ WRIST_INDEX = 0
 
 # Numerical stability
 EPSILON = 1e-8
+
+# Training config
+RANDOM_STATE = 42
+TEST_SIZE = 0.2
+RF_ESTIMATORS = 200

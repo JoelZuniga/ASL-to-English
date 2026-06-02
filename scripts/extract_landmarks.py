@@ -6,9 +6,9 @@ from pathlib import Path
 from typing import Any
 
 import cv2 as cv
-import mediapipe as mp  # type: ignore[import-untyped]
-from mediapipe.tasks.python import BaseOptions  # type: ignore[import-untyped]
-from mediapipe.tasks.python.vision import (  # type: ignore[import-untyped]
+import mediapipe as mp
+from mediapipe.tasks.python import BaseOptions
+from mediapipe.tasks.python.vision import (
     HandLandmarker,
     HandLandmarkerOptions,
     RunningMode,
