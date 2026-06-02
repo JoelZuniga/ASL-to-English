@@ -80,6 +80,16 @@ def normalize_landmarks(landmarks: LandmarkArray) -> LandmarkArray:
     return centered_landmarks / scale
 
 
+def flip_landmarks(landmarks: LandmarkArray) -> LandmarkArray:
+
+    validate_landmarks_shape(landmarks)
+
+    flipped = landmarks.copy()
+    flipped[:, 0] = 1.0 - flipped[:, 0]
+
+    return flipped
+
+
 # Convert landmarks into a normalized flat feature vector.
 def landmarks_to_feature_vector(landmarks: LandmarkArray) -> LandmarkArray:
 

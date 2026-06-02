@@ -14,7 +14,12 @@ from src.config import (
     RF_ESTIMATORS,
     TEST_SIZE,
 )
-from src.ml.features import get_landmark_columns, values_to_feature_vector
+from src.ml.features import (
+    flip_landmarks,
+    get_landmark_columns,
+    landmarks_to_feature_vector,
+    row_to_landmarks,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -62,19 +67,33 @@ def load_dataset(input_file: Path) -> tuple[pd.DataFrame, pd.Series]:
     return features, labels
 
 
-def build_feature_matrix(features: pd.DataFrame) -> list[list[float]]:
+def build_augmented_matrix(
+    features: pd.DataFrame,
+    labels: pd.Series,
+    augment_flipped: bool = True,
+) -> tuple[list[list[float]], list[str]]:
     feature_vectors: list[list[float]] = []
+    expanded_labels: list[str] = []
 
-    for row in features.itertuples(index=False, name=None):
-        feature_vector = values_to_feature_vector(row)
+    for row, label in zip(features.itertuples(index=False, name=None), labels):
+        landmarks = row_to_landmarks(row)
+
+        feature_vector = landmarks_to_feature_vector(landmarks)
         feature_vectors.append(feature_vector.tolist())
+        expanded_labels.append(str(label))
 
-    return feature_vectors
+        if augment_flipped:
+            flipped_landmarks = flip_landmarks(landmarks)
+            flipped_feature_vector = landmarks_to_feature_vector(flipped_landmarks)
+            feature_vectors.append(flipped_feature_vector.tolist())
+            expanded_labels.append(str(label))
+
+    return feature_vectors, expanded_labels
 
 
 def train_model(
     feature_matrix: list[list[float]],
-    labels: pd.Series,
+    labels: list[str],
 ) -> RandomForestClassifier:
     model = RandomForestClassifier(
         n_estimators=RF_ESTIMATORS,
@@ -97,7 +116,7 @@ def main() -> None:
     args = parse_args()
 
     raw_features, labels = load_dataset(args.input_file)
-    feature_matrix = build_feature_matrix(raw_features)
+    feature_matrix, labels = build_augmented_matrix(raw_features, labels)
 
     x_train, x_test, y_train, y_test = train_test_split(
         feature_matrix,

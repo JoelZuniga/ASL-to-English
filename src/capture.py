@@ -28,7 +28,7 @@ def main():
                 print("Ignoring empty camera frame.")
                 continue
 
-            # image = cv.flip(image, 1)
+            image = cv.flip(image, 1)
 
             mp_image = make_mp_image(image)
 
