@@ -1,7 +1,7 @@
 from typing import Any
 
 import cv2 as cv
-import mediapipe as mp  # type: ignore[import-untyped]
+import mediapipe as mp
 
 from src.config import NUM_HANDS
 from src.utils.paths import HAND_LANDMARKER_MODEL

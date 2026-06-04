@@ -18,3 +18,20 @@ def draw_hand_landmarks(image, hand_landmarks):
             cv.line(image, points[start_idx], points[end_idx], (255, 0, 0), 2)
 
     return image
+
+
+def draw_prediction(image, label, confidence):
+    text = f"Prediction: {label} ({confidence:.0%})"
+
+    cv.putText(
+        image,
+        text,
+        (20, 40),
+        cv.FONT_HERSHEY_SIMPLEX,
+        1,
+        (0, 255, 0),
+        2,
+        cv.LINE_AA,
+    )
+
+    return image
