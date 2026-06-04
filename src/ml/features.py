@@ -51,8 +51,9 @@ def center_landmarks(landmarks: LandmarkArray) -> LandmarkArray:
     validate_landmarks_shape(landmarks)
 
     wrist = landmarks[WRIST_INDEX]
+    centered = np.asarray(landmarks - wrist, dtype=np.float32)
 
-    return landmarks - wrist  # type: ignore[no-any-return]
+    return centered
 
 
 # Calculate a scale factor based on the farthest landmark from wrist.
@@ -76,8 +77,9 @@ def normalize_landmarks(landmarks: LandmarkArray) -> LandmarkArray:
 
     centered_landmarks = center_landmarks(landmarks)
     scale = get_scale_factor(centered_landmarks)
+    normalized = np.asarray(centered_landmarks / scale, dtype=np.float32)
 
-    return centered_landmarks / scale
+    return normalized
 
 
 def flip_landmarks(landmarks: LandmarkArray) -> LandmarkArray:
