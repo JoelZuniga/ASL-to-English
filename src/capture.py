@@ -2,7 +2,7 @@ import time
 
 import cv2 as cv
 
-from src.config import CAMERA_INDEX, WINDOW_NAME
+from src.config import CAMERA_INDEX, MIN_CONFIDENCE, WINDOW_NAME
 from src.ml.classifier import load_model, predict_landmarks
 from src.utils.paths import ASL_CLASSIFIER_MODEL
 from src.vision.drawing import draw_hand_landmarks, draw_prediction
@@ -43,11 +43,12 @@ def main():
                 prediction = predict_landmarks(model, hand_landmarks)
 
                 image = draw_hand_landmarks(image, hand_landmarks)
-                image = draw_prediction(
-                    image,
-                    prediction.label,
-                    prediction.confidence,
-                )
+                if prediction.confidence >= MIN_CONFIDENCE:
+                    image = draw_prediction(
+                        image,
+                        prediction.label,
+                        prediction.confidence,
+                    )
 
             cv.imshow(WINDOW_NAME, image)
 
