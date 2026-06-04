@@ -14,6 +14,8 @@ from mediapipe.tasks.python.vision import (
     RunningMode,
 )
 
+from src.config import LANDMARK_COUNT
+
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
 EXCLUDED_CLASSES = {"J", "Z", "del", "nothing", "space"}
 
@@ -73,7 +75,7 @@ def get_class_dirs(input_dir: Path) -> list[Path]:
 def build_csv_header() -> list[str]:
     header = ["label"]
 
-    for landmark_index in range(21):
+    for landmark_index in range(LANDMARK_COUNT):
         header.extend(
             [
                 f"x{landmark_index}",
