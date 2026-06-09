@@ -41,3 +41,15 @@ RF_ESTIMATORS = 200
 
 # Inference config
 MIN_CONFIDENCE = 0.6
+
+# Motion letter detection (J and Z)
+SEQUENCE_WINDOW = 30
+MOTION_THRESHOLD = 0.015
+SMOOTHING_WINDOW = 5
+MOTION_CLASSES: list[str] = ["J", "Z"]
+
+# LSTM architecture
+LSTM_HIDDEN_SIZE = 128
+LSTM_NUM_LAYERS = 2
+LSTM_DROPOUT = 0.3
+LSTM_NUM_CLASSES = 2
