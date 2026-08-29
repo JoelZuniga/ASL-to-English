@@ -28,6 +28,7 @@ mypy_extensions==1.1.0
 networkx==3.2.1
 nodeenv==1.10.0
 numpy==2.0.2
+onnx==1.17.0
 onnxruntime==1.19.2
 opencv-contrib-python==4.13.0.92
 packaging==26.2
