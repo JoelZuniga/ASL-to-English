@@ -116,14 +116,18 @@ def main() -> None:
     args = parse_args()
 
     raw_features, labels = load_dataset(args.input_file)
-    feature_matrix, labels = build_augmented_matrix(raw_features, labels)
 
-    x_train, x_test, y_train, y_test = train_test_split(
-        feature_matrix,
+    x_train_raw, x_test_raw, y_train_raw, y_test_raw = train_test_split(
+        raw_features,
         labels,
         test_size=TEST_SIZE,
         random_state=RANDOM_STATE,
         stratify=labels,
+    )
+
+    x_train, y_train = build_augmented_matrix(x_train_raw, y_train_raw)
+    x_test, y_test = build_augmented_matrix(
+        x_test_raw, y_test_raw, augment_flipped=False
     )
 
     model = train_model(x_train, y_train)

@@ -18,6 +18,7 @@ Thumbs.db
 # IDE / Editor
 .vscode/
 .idea/
+CLAUDE.md
 
 # Jupyter (if you use later)
 .ipynb_checkpoints/
@@ -36,6 +37,7 @@ models/*.pt
 models/*.pth
 models/*.onnx
 models/*.pkl
+models/*.json
 
 # Video / Images (if you capture)
 *.mp4
@@ -52,3 +54,4 @@ dist/
 # Misc
 *.swp
 *.swo
+
