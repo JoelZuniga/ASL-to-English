@@ -37,6 +37,7 @@ models/*.pt
 models/*.pth
 models/*.onnx
 models/*.pkl
+models/*.json
 
 # Video / Images (if you capture)
 *.mp4
